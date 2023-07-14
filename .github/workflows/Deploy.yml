@@ -35,11 +35,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew bootJar
 
-    - name: Build, tag, and push image to Amazon ECR
-      run: docker build -t slowcom .
+    - name: docker Build
+      run: docker build -t dockertest .
 
     - name: Tag
-      run: docker tag slowcom:latest 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
+      run: docker tag dockertest:latest 594585741510.dkr.ecr.ap-northeast-2.amazonaws.com/dockertest:latest
 
     - name: push image to Amazon ECR
-      run: docker push 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
+      run: docker push 594585741510.dkr.ecr.ap-northeast-2.amazonaws.com/dockertest:latest
