@@ -2,8 +2,8 @@ FROM openjdk:11-jdk
 
 WORKDIR usr/src/app
 
-ARG JAR_FILE=build/libs/*.jar
+ARG JAR_FILE=build/libs/docker-actions-0.0.1-SNAPSHOT.jar
 
 COPY ${JAR_FILE} app.jar
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=docker", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
