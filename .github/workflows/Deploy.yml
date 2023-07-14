@@ -42,6 +42,6 @@ jobs:
       
     - name: Build, tag, and push image to Amazon ECR
       run: |
-        push docker build -t slowcom .
-        push docker tag slowcom:latest 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
-        push docker push 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
+        docker build -t slowcom .
+        docker tag slowcom:latest 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
+        docker push 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
