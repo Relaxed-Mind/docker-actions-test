@@ -41,13 +41,10 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build with Gradle
-      run: ./gradlew bootJar
+      run: ./gradlew clean build
 
     - name: Build, tag, and push image to Amazon ECR
       run: |
-        echo hi1
         docker build -t slowcom .
-        echo hi2
         docker tag slowcom:latest 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
-        echo hi3
         docker push 594585741510.dkr.ecr.us-east-1.amazonaws.com/slowcom:latest
