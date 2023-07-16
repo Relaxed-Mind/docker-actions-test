@@ -1,6 +1,7 @@
 package test.dockeractions;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +12,8 @@ public class TestController {
     private final UserRepository userRepository;
 
     @GetMapping("/")
-    public String hello(){
-        return "hi!!";
+    public String hello(@Value("${greeting.message}")  String message){
+        return message;
     }
 
     @GetMapping("/save")
