@@ -15,14 +15,12 @@ jobs:
         run: |
           touch src/main/resources/application.yml
           echo "${{ secrets.APPLICATION }}" >> src/main/resources/application.yml
-        shell: bash
 
       ## create prod.yml
       - name: make application-prod.yml
         run: |
           touch src/main/resources/application-prod.yml
           echo "${{ secrets.APPLICATION_PROD }}" >> src/main/resources/application-prod.yml
-        shell: bash
 
       - name: 스프링부트 애플리케이션 빌드
         run: ./gradlew bootJar
