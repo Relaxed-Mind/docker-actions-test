@@ -23,9 +23,9 @@ jobs:
         run: docker push ${{ secrets.DOCKER_REPO }}/action-test
 
       - name: 배포
-        uses: appleboy/ssh-action@v0.1.6
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.EC2_SERVER_HOST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
