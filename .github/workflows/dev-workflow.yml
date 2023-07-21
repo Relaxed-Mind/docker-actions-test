@@ -16,7 +16,7 @@ jobs:
       - name: 도커 이미지 빌드
         run: |
           echo "hi"
-          docker build -t ${{ secrets.DOCKER_REPO }}/action-test -f Dockerfile.dev --platform linux/amd64 .
+          docker build -t ${{ secrets.DOCKER_REPO }}/action-test --platform linux/amd64 .
           echo "hi"
 
       - name: 도커 이미지 push
