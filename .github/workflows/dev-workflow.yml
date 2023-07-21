@@ -13,16 +13,13 @@ jobs:
       - name: 스프링부트 애플리케이션 빌드
         run: ./gradlew bootJar
 
-      - name: Run ls -al
-        run: ls -al # Runner가 제공하는 디렉토리에 어떤 파일들이 있는지 알려줌.
-
       - name: 도커 이미지 빌드
-        run: docker build -t ${{ secrets.DOCKER_REPO }}/action-test -f Dockerfile.dev --platform linux/amd64 .
+        run: docker build -t ${{ secrets.DOCKER_IMAGE }} -f Dockerfile.dev --platform linux/amd64 .
 
       - name: 도커 이미지 push
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push ${{ secrets.DOCKER_REPO }}/action-test
+          docker push ${{ secrets.DOCKER_IMAGE }}
 
       - name: 배포
         uses: appleboy/ssh-action@v0.1.6
