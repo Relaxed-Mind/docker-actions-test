@@ -14,7 +14,7 @@ jobs:
         run: ./gradlew bootJar
 
       - name: 도커 이미지 빌드
-        run: docker build -t ${{ secrets.DOCKER_REPO }}/action-test -f Dockerfile.dev --platform linux/amd64 .
+        run: docker build -t ${{ secrets.DOCKER_REPO }}/action-test --platform linux/amd64 .
 
       - name: 도커 로그인
         uses: docker/login-action@v2
