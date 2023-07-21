@@ -16,6 +16,11 @@ public class TestController {
         return message;
     }
 
+    @GetMapping("/test")
+    public String test(){
+        return "Nice to Meet you";
+    }
+
     @GetMapping("/save")
     public String save(){
         User user = new User();

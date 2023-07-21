@@ -6,7 +6,7 @@ build/
 !**/src/test/**/build/
 *.yml
 mysql/
-
+*.pem
 
 ### STS ###
 .apt_generated
