@@ -35,7 +35,7 @@ jobs:
           script: |
             docker stop $(docker ps -a -q) 
             docker rm -f $(docker ps -qa)
-            docker pull ${{ secrets.DOCKER_IMG }}
-            docker-compose up -d
+            docker pull ${{ secrets.DOCKER_REPO }}/action-test
+            docker-compose -f docker-compose-prod.yml up -d --build
             docker image prune -f
   
