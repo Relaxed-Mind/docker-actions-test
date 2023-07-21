@@ -13,6 +13,32 @@ jobs:
       - name: 스프링부트 애플리케이션 빌드
         run: ./gradlew bootJar
 
+      ## create .yml
+      - name: make application.yml
+        run: |
+          ## create application.yml
+          cd ./src/main/resources
+          
+          ## application-database.yaml 파일 생성
+          touch ./application.yml
+          
+          # GitHub-Actions 에서 설정한 값을 application-database.yaml 파일에 쓰기
+          echo "${{ secrets.APPLICATION }}" >> ./application.yml
+        shell: bash
+
+      ## create prod.yml
+      - name: make application-prod.yml
+        run: |
+          ## create application-prod.yml
+          cd ./src/main/resources
+          
+          ## application-prod.yaml 파일 생성
+          touch ./application-prod.yml
+          
+          # GitHub-Actions 에서 설정한 값을 application-prod.yml 파일에 쓰기
+          echo "${{ secrets.APPLICATION_PROD }}" >> ./application-prod.yml
+        shell: bash
+
       - name: 도커 이미지 빌드
         run: docker build -t ${{ secrets.DOCKER_REPO }}/action-test --platform linux/amd64 .
 
