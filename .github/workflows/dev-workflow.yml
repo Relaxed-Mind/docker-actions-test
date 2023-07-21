@@ -13,8 +13,8 @@ jobs:
       ## create .yml
       - name: make application.yml
         run: |
-          touch src/main/resources/application.yml
-          echo "${{ secrets.APPLICATION }}" >> src/main/resources/application.yml
+          touch ./src/main/resources/application.yml
+          echo "${{ secrets.APPLICATION }}" >> ./src/main/resources/application.yml
 
       ## create prod.yml
       - name: make application-prod.yml
